@@ -32,9 +32,11 @@ function ProfilePage() {
 };
 
   const endorseSkill = async (id) => {
-    await axios.post(
-      `http://localhost:5000/api/profile/skills/${id}/endorse`
-    );
+  await axios.post(
+    `${import.meta.env.VITE_API_BASE_URL}/api/profile/skills/${id}/endorse`
+  );
+};
+
     fetchProfile();
   };
 
