@@ -32,11 +32,9 @@ function ProfilePage() {
 };
 
   const endorseSkill = async (id) => {
-  await axios.post(
-    `${import.meta.env.VITE_API_BASE_URL}/api/profile/skills/${id}/endorse`
-  );
-};
-
+    await axios.post(
+      `http://localhost:5000/api/profile/skills/${id}/endorse`
+    );
     fetchProfile();
   };
 
@@ -116,10 +114,13 @@ function ProfilePage() {
     const formData = new FormData();
     formData.append("profilepic", file);
 
-   await axios.post(
-  `${import.meta.env.VITE_API_BASE_URL}/api/profile/upload/1`,
-  formData
-);
+    await axios.post(
+      "http://localhost:5000/api/profile/upload/1",
+      formData,
+      {
+        headers: { "Content-Type": "multipart/form-data" }
+      }
+    );
 
     fetchProfile(); // reload profile after upload
   }}
